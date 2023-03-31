@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.playground</groupId>
+    <artifactId>Playground</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- maven-surefire-plugin running automated tests in a Maven project  -->
+    <!-- and parallel testing  -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <parallel>methods</parallel>
+                    <!--<threadCount>4</threadCount>-->
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+
+                    <perCoreThreadCount>false</perCoreThreadCount>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <includes>
+                        <include>**/CukesRunner*.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <!--responsible for compiling Java source code into bytecode,
+            which can be executed on the Java Virtual Machine (JVM).-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!--  Selenium Libraries and WebDriver API to interact with a web browser. -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
+        <!--  library automate the process of downloading and
+        configuring the required driver -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+
+        <!-- Just a Java Faker to generate random content -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
+        <!--  to write and run Cucumber tests in a Java
+          feature files, step definitions, and hooks-->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.2.3</version>
+        </dependency>
+
+        <!-- to run Cucumber tests using the JUnit.
+         1.JUnit runner Class,
+         2.JUnit annotations: @Before, @After, @BeforeClass, and @AfterClass
+         3.Parallel testing with CucumberParallel that extends BlockJUnit4ClassRunner.-->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.2.3</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- to write and run automated tests
+        1.Annotations: @Test, @BeforeSuite, @AfterSuite, @BeforeTest, @AfterTest, @BeforeClass,
+        @AfterClass, @BeforeMethod, and @AfterMethod.
+        2.Data-Driven Testing
+        3.Parallel Test Execution
+        4.Test Reports-->
+                <dependency>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                    <version>7.7.1</version>
+                    <scope>test</scope>
+                </dependency>
+
+        <!-- HTML report for Cucumber test results -->
+        <dependency>
+            <groupId>me.jvt.cucumber</groupId>
+            <artifactId>reporting-plugin</artifactId>
+            <version>7.2.0</version>
+        </dependency>
+
+        <!--log functionality for development -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.32</version>
+        </dependency>
+        <!--Java library that provides APIs for Microsoft Office Open XML -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.2</version>
+        </dependency>
+        <!--JDBC driver that provides connectivity to Oracle databases -->
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>21.9.0.0</version>
+        </dependency>
+        <!--JDBC driver that provides connectivity to MySQL databases -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.32</version>
+        </dependency>
+        <!-- Junit5  -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.9.2</version>
+        </dependency>
+        <!--Rest-Assured is a popular choice for API testing
+        integrates JUnit or TestNG, and Cucumber.-->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+
+    </dependencies>
+
+
+</project>
